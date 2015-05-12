@@ -1,4 +1,7 @@
 
+function deltaTime(anterior){
+    return new Date().getTime() - anterior;
+}
 
 function gameObject(spriteSrc) {
    this.x = 0;
@@ -15,7 +18,8 @@ function gameObject(spriteSrc) {
 
 gameObject.prototype = {
     atualizar: function( gameTime ){
-        gameTime /= 200;
+        //gameTime *= deltaTime(gameTime);
+        gameTime /= 60;
         this.linha = (parseInt(gameTime)% this.numLinhas);
         this.coluna = parseInt(
             (parseInt(gameTime)%(this.numColunas*this.numLinhas))/ this.numColunas);
@@ -24,7 +28,7 @@ gameObject.prototype = {
     },
     desenhar: function( context ){
         context.drawImage(this.sprite,
-            this.linha*this.width, this.linha*this.height, // na imagem
+            this.linha*this.width, this.coluna*this.height, // na imagem
             this.width, this.height,                // na imagem
             this.x,this.y,this.width,this.height    //no canvas
         );
