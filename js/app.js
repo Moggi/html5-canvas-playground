@@ -23,22 +23,32 @@ window.onload = function()
 
 function startDrawing(context)
 {
-    // inicia novo path (apagando desenhos anteriores)
+    // lembre-se: context.arc(x,y,raio,inicio,termino,sentido);
+    // x,y do centro
+    // raio em pixels
+    // inicio e termino em radianos ( = graus * Math.PI/180 )
+    // sentido: null ou false = anti-horario / true=horario
+
+    context.fillStyle = 'gray';
+    context.strokeStyle = 'black';
+    context.lineWidth = 2;
+
     context.beginPath();
 
-    // posiciona a caneta virtual num determinado ponto
-    context.moveTo(75,250);
-    context.lineTo(150,50);
-    context.lineTo(225,250);
-    context.lineTo(50,120);
-    context.lineTo(250,120);
-    context.lineTo(75,250);
+        context.arc(50,50,40,90*Math.PI/180,270*Math.PI/180,false); //anti-horario
 
-    // configurar a linha
-    context.lineWidth = 2;
-    context.strokeStyle = 'red';
+        context.fill();
 
-    // contonar a area desenhada
     context.stroke();
+
+    context.beginPath();
+
+        context.arc(250,50,40,0,2*Math.PI);
+
+        context.fill();
+
+    context.stroke();
+
+
 
 }

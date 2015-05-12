@@ -5,4 +5,4 @@ This README would normally document whatever steps are necessary to get your app
 
 ## Quick Start
 
-Need nothing, just open index.html into a browser.
+No dependencies just: Open index.html into a browser.
