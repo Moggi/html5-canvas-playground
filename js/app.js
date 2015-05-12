@@ -23,31 +23,32 @@ window.onload = function()
 
 function startDrawing(context)
 {
-    // lembre-se: context.arc(x,y,raio,inicio,termino,sentido);
-    // x,y do centro
-    // raio em pixels
-    // inicio e termino em radianos ( = graus * Math.PI/180 )
-    // sentido: null ou false = anti-horario / true=horario
+    var image = new Image();
+    image.src = 'img/doge.png';
 
-    context.fillStyle = 'gray';
-    context.strokeStyle = 'black';
-    context.lineWidth = 2;
+    var coin = new Image();
+    coin.src = 'img/coin.png';
 
-    context.beginPath();
+    //context.drawImage(imagem,x,y,with,height);
+    //context.drawImage(imagem,xOrigem,yOrigem,widthOrigem,heightOrigem,
+    //  xDestino,yDestino, widthDestino, heightDestino);
 
-        context.arc(50,50,40,90*Math.PI/180,270*Math.PI/180,false); //anti-horario
+    context.drawImage(image,0,0,375,360);
 
-        context.fill();
+    var x=400;
+    for(var i=1; i<=5; i++, x+=32)
+        context.drawImage(coin,x,200,32,32);
 
-    context.stroke();
+    context.drawImage(coin,400,100,64,64);
 
-    context.beginPath();
 
-        context.arc(250,50,40,0,2*Math.PI);
+    var explosionSheet = new Image();
+    explosionSheet.src = 'img/explosion.png';
 
-        context.fill();
-
-    context.stroke();
+    context.drawImage(explosionSheet,
+        128,192,64,64,  // area de recorte na imagem
+        500,100,64,64   // area no canvas (x,y,width,height)
+    );
 
 
 
