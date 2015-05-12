@@ -23,13 +23,22 @@ window.onload = function()
 
 function startDrawing(context)
 {
-    // preenchimento vermelho
-    context.fillStyle = 'red';
-    context.fillRect(50,50,100,100);
+    // inicia novo path (apagando desenhos anteriores)
+    context.beginPath();
 
-    // contorno azul
-    context.lineWidth =2;
-    context.strokeStyle = 'blue';
-    context.strokeRect(50,50,100,100);
+    // posiciona a caneta virtual num determinado ponto
+    context.moveTo(75,250);
+    context.lineTo(150,50);
+    context.lineTo(225,250);
+    context.lineTo(50,120);
+    context.lineTo(250,120);
+    context.lineTo(75,250);
+
+    // configurar a linha
+    context.lineWidth = 2;
+    context.strokeStyle = 'red';
+
+    // contonar a area desenhada
+    context.stroke();
 
 }
