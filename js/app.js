@@ -1,8 +1,11 @@
 
 
+function DeltaTime(anterior){
+    return new Date().getTime() - anterior;
+}
 
 
-
+// ===============================================================
 
 window.onload = function()
 {
@@ -16,40 +19,54 @@ window.onload = function()
 
     var context = canvas.getContext('2d');
 
-
     startDrawing(context);
 
+    // ===============================================================
+
+    function startDrawing(context)
+    {
+
+        var explosionSheet = new Image();
+        explosionSheet.src = 'img/explosion.png';
+
+        var anterior = new Date().getTime();
+
+        // Inicia animacao
+        setInterval(draw,1000/60);
+
+        // alto consumo de processamento
+        // window.requestAnimationFrame( draw );
+
+        // window.requestAnimFrame = (function(){
+        //     return  window.requestAnimationFrame    ||
+        //         window.webkitRequestAnimationFrame  ||
+        //         window.mozRequestAnimationFrame     ||
+        //         window.oRequestAnimationFrame       ||
+        //     function( callback ){
+        //         window.setTimeout(callback, 1000 / 60);
+        //       };
+        // })();
+
+        function draw()
+        {
+            // limpa o canvas
+            context.clearRect(0,0,canvasWidth,canvasHeight);
+
+            var time = anterior/50;
+            console.log(time);
+
+            var xSpriteSheet = 64 * (parseInt(time)%5);
+
+            var ySpriteSheet = 64 * parseInt((parseInt(time)%25)/5);
+
+            context.drawImage(explosionSheet,
+                xSpriteSheet,ySpriteSheet,64,64,  // area de recorte na imagem
+                0,0,64,64   // area no canvas (x,y,width,height)
+            );
+            anterior = new Date().getTime();
+            // requestAnimFrame(draw);
+        }
+
+    }
+
 };
-
-function startDrawing(context)
-{
-    var image = new Image();
-    image.src = 'img/doge.png';
-
-    var coin = new Image();
-    coin.src = 'img/coin.png';
-
-    //context.drawImage(imagem,x,y,with,height);
-    //context.drawImage(imagem,xOrigem,yOrigem,widthOrigem,heightOrigem,
-    //  xDestino,yDestino, widthDestino, heightDestino);
-
-    context.drawImage(image,0,0,375,360);
-
-    var x=400;
-    for(var i=1; i<=5; i++, x+=32)
-        context.drawImage(coin,x,200,32,32);
-
-    context.drawImage(coin,400,100,64,64);
-
-
-    var explosionSheet = new Image();
-    explosionSheet.src = 'img/explosion.png';
-
-    context.drawImage(explosionSheet,
-        128,192,64,64,  // area de recorte na imagem
-        500,100,64,64   // area no canvas (x,y,width,height)
-    );
-
-
-
-}
