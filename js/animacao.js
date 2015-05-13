@@ -1,3 +1,5 @@
+var j=1;
+var precisao = 200;
 
 function Animacao(context){
     this.context = context;
@@ -32,8 +34,7 @@ Animacao.prototype = {
         var y=100;
         var Y=0;
         var drawSize = this.context.canvas.width - x*2;
-        var numPontos = 50000;
-        var precisao = 600;
+        var numPontos = 10000;
 
         this.context.save();
 
@@ -49,6 +50,9 @@ Animacao.prototype = {
             this.context.lineTo(x,y*Y+y*2);
         }
         this.context.stroke();
+        precisao += j*10;
+        if( precisao>600 || precisao <200 )
+            j=-j;
 
         /*
 
