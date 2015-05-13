@@ -28,6 +28,30 @@ Animacao.prototype = {
         // A cada ciclo, limpamos a tela ou desenhamos um fundo
         this.limparTela();
 
+        var x=100;
+        var y=100;
+        var Y=0;
+        var drawSize = this.context.canvas.width - x*2;
+        var numPontos = 50000;
+        var precisao = 600;
+
+        this.context.save();
+
+        this.context.strokeStyle = 'gray';
+        this.context.strokeLike = 2;
+        this.context.beginPath();
+
+        this.context.moveTo(x,y);
+        for( var i=0; i<numPontos; i++)
+        {
+            Y = Math.sin(i/precisao);
+            x += drawSize/numPontos;
+            this.context.lineTo(x,y*Y+y*2);
+        }
+        this.context.stroke();
+
+        /*
+
         // Atualizamos o estado dos sprites
         for (var i in this.sprites)
             this.sprites[i].atualizar(this.gameTime);
@@ -37,7 +61,8 @@ Animacao.prototype = {
         {
             this.sprites[i].desenhar(this.context);
         }
-        var fps = String(deltaTime(this.gameTime));
+        */
+        var fps = String(parseInt(1000/deltaTime(this.gameTime)));
         this.context.save();
         this.context.fillStyle = 'red';
         this.context.strokeStyle = 'black';
@@ -45,6 +70,7 @@ Animacao.prototype = {
         this.context.fillText(fps,200,200);
         this.context.strokeText(fps,200,200);
         this.context.restore();
+
 
         this.gameTime = new Date().getTime();
         // Chamamos o próximo ciclo
