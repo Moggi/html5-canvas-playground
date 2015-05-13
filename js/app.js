@@ -22,6 +22,7 @@ var animacao = new Animacao(context);
 
 var explosion = new gameObject('img/explosion.png');
 
+
 animacao.novoSprite(explosion);
 
 

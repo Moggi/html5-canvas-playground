@@ -37,6 +37,15 @@ Animacao.prototype = {
         {
             this.sprites[i].desenhar(this.context);
         }
+        var fps = String(deltaTime(this.gameTime));
+        this.context.save();
+        this.context.fillStyle = 'red';
+        this.context.strokeStyle = 'black';
+        this.context.font = '30px sans-serif';
+        this.context.fillText(fps,200,200);
+        this.context.strokeText(fps,200,200);
+        this.context.restore();
+
         this.gameTime = new Date().getTime();
         // Chamamos o próximo ciclo
         var animacao = this;
