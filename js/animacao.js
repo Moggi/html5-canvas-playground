@@ -51,10 +51,10 @@ Animacao.prototype = {
         }
         this.context.stroke();
         precisao += j*10;
-        if( precisao>600 || precisao <200 )
+        if( precisao>1000 || precisao <100 )
             j=-j;
 
-        /*
+        // /*
 
         // Atualizamos o estado dos sprites
         for (var i in this.sprites)
@@ -65,7 +65,7 @@ Animacao.prototype = {
         {
             this.sprites[i].desenhar(this.context);
         }
-        */
+        // */
         var fps = String(parseInt(1000/deltaTime(this.gameTime)));
         this.context.save();
         this.context.fillStyle = 'red';
