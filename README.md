@@ -1,13 +1,13 @@
 # HTML5 Canvas e JavaScript
 
-Some testes made to learn HTML5 Canvas + Javascript
+Some tests made to learn HTML5 Canvas + Javascript
 
 Everything from May 2015
 
 
 ## Quick Start
 
-No dependencies just: Open index.html into a browser.
+No dependencies, just open **index.html** into a browser.
 
 
 ## About
